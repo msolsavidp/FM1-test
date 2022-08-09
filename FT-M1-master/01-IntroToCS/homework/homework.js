@@ -11,7 +11,7 @@ function BinarioADecimal(num) {
   }
     return result
   }
-  
+  console.log (BinarioADecimal(1001))
 
 
 function DecimalABinario(num) {
