@@ -7,10 +7,25 @@ function factorear(num) {
   // los factores por los cuales se va dividiendo a dicho número (De menor a mayor)
   // Ej: factorear(180) --> [1, 2, 2, 3, 3, 5] Ya que 1x2x2x3x3x5 = 180 y son todos números primos
   // Tu código:
-  var primos = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29]
-  var factores = [];
-  var acc = num
-  for (let i = 0; i < num; i++) {
+  let primos = 2;
+  let factores = [1];
+  //mientas el numero sea mayor a 1 que se repita
+  while (num>1) {
+    //se puede dividir entre 2 o el valor que tenemos
+    if (num % primos === 0){
+      //pusheo el valor dentro del array factores para luego devolverlo
+      factores.push(primos);
+      //divido num
+      num = num/primos;
+
+      } else {
+        primos++;
+      }
+    }
+    return factores;
+  }
+
+  /*
     while (acc % primos[i] === 0) {
       factores.push(primos[i])
       acc = acc / primos[i]
@@ -20,7 +35,7 @@ function factorear(num) {
     }
   }
   return factores
-}
+}*/
 
 
 
@@ -41,6 +56,31 @@ function bubbleSort(array) {
   return array
 }
 
+/*OTRA RESOLUCIÓN
+let intercambiar = true;
+
+//Si intercambiar es verdadero
+while (intercambiar) {
+
+  //primero apagamos el switch
+  intercambiar = false;
+
+  for (let i=0; i<arra.length; i++){
+    if (array[i] > array[i+1]){
+      let temp = array[i];
+      array[i] = array[i+1];
+      array[i+1] = temp;
+      //si hubo un intercambio cambio el switch de nuevo a verdadero para que haga otra iteración
+      intercambiar = true;
+    }
+  }
+  //si es falso no entra en el if, pasa al siguiente indice del for si se acaba el for y intercambiar es verdadero empieza de nuevo a iterar desde el principio
+
+  return array
+}
+
+*/
+
 
 function insertionSort(array) {
   // Implementar el método conocido como insertionSort para ordenar de menor a mayor
@@ -58,6 +98,25 @@ function insertionSort(array) {
 }
 return array
 }
+
+//OTRA FORMA DE HACERLO
+/*
+//Recorremos el array
+for (let i = 1; i<array.length; i++){
+  //guarda posición anterior
+  let previo = i-1;
+  //guarda valor actual
+  let temp = array[i];
+  // previo llego a 0 y el valor actual es menor al anterior?
+  while (previo >= 0 && temp < array[previo]){
+      array[previo+1] = array[previo];
+      previo--
+  }
+  array[previo+1] = temp
+}
+return array
+}
+*/
 
 
 function selectionSort(array) {
@@ -81,7 +140,29 @@ function selectionSort(array) {
 return array;
 }
 
+//OTRA FORMA DE RESOLVER
+/*
+//identificar el num mas chico
+for (let i = 0; i<array.length; i++){
+  //asumo que el numero mas chico es el i
+  let min = i;
+    //recorre uno adelante de i para comparar
+    for (let j = i+1; j< array.length; j++){
+      if (array[min]>array[j]){
+        //actualizamos el index del numero mas chico
+        min = j;
+      }
+      //intercambiamos valores entre el numero mas chico y el primero que tomamos como más chico
+      if (i !== min){
+        let temp = array[i];
+        array[i] = array[min];
+        array[min] = temp;
+      }
+  }
+  return array
+}
 
+*/ 
 // No modificar nada debajo de esta línea
 // --------------------------------
 
